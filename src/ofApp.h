@@ -22,18 +22,34 @@ class ofApp : public ofBaseApp{
     
     ofImage img;
     
+    // Things to control in the GUI
+    //int xOffset;
+    int yOffset;
+    
+    int hIterations;
+    int vIterations;
+    
+    float imgScale;
+    
     // GUI
+    void circleResolutionChanged(int & circleResolution);
+    void ringButtonPressed();
+    
     bool bHide;
     
     ofxFloatSlider radius;
     ofxColorSlider color;
     ofxVec2Slider center;
-    ofxIntSlider circleResolution;
+    
+    ofxIntSlider xOffset;
+    
     ofxToggle filled;
     ofxButton twoCircles;
     ofxButton ringButton;
     ofxLabel screenSize;
     
     ofxPanel gui;
+    
+    	ofSoundPlayer ring;
 		
 };
