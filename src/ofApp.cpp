@@ -1,7 +1,7 @@
 #include "ofApp.h"
 
-#define X_OFFSET -70
-#define Y_OFFSET -70
+//#define X_OFFSET -70
+//#define Y_OFFSET -70
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -13,14 +13,22 @@ void ofApp::setup(){
     ringButton.addListener(this,&ofApp::ringButtonPressed);
     
     gui.setup(); // most of the time you don't need a name
-    gui.add(filled.setup("fill", true));
-    gui.add(radius.setup( "radius", 140, 10, 300 ));
-    gui.add(center.setup("center",ofVec2f(ofGetWidth()*.5,ofGetHeight()*.5),ofVec2f(0,0),ofVec2f(ofGetWidth(),ofGetHeight())));
-    gui.add(color.setup("color",ofColor(100,100,140),ofColor(0,0),ofColor(255,255)));
-    gui.add(xOffset.setup("circle res", -70, -200, 200));
-    gui.add(twoCircles.setup("two circles"));
-    gui.add(ringButton.setup("ring"));
-    gui.add(screenSize.setup("screen size", ""));
+    
+    //gui.add(filled.setup("fill", true));
+    //gui.add(radius.setup( "radius", 140, 10, 300 ));
+    //gui.add(center.setup("center",ofVec2f(ofGetWidth()*.5,ofGetHeight()*.5),ofVec2f(0,0),ofVec2f(ofGetWidth(),ofGetHeight())));
+    //gui.add(color.setup("color",ofColor(100,100,140),ofColor(0,0),ofColor(255,255)));
+    
+    gui.add(xOffset.setup("x offset", -70, -200, 200));
+    gui.add(yOffset.setup("y offset", -70, -200, 200));
+    
+    gui.add(hIterations.setup("h iters", 18, 1, 50));
+    gui.add(vIterations.setup("v iters", 11, 1, 50));
+    
+    
+    //gui.add(twoCircles.setup("two circles"));
+    //gui.add(ringButton.setup("ring"));
+    //gui.add(screenSize.setup("screen size", ""));
     
     bHide = true;
     
@@ -41,11 +49,11 @@ void ofApp::draw(){
     ofPushMatrix();
     ofTranslate(0,108);
     
-    for(int j=0;j<11;j++){
+    for(int j=0;j<vIterations;j++){
         
-        for(int i=0;i<18;i++){
+        for(int i=0;i<hIterations;i++){
             ofPushMatrix();
-            ofTranslate(i*124.8+(j%2)*124.8/2+xOffset,j*108+Y_OFFSET);
+            ofTranslate(i*124.8+(j%2)*124.8/2+xOffset,j*108+yOffset);
             ofPushMatrix();
             ofRotate(i*-240+(j%2)*240);
             //ofSetColor(255,0,0);

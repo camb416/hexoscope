@@ -24,12 +24,12 @@ class ofApp : public ofBaseApp{
     
     // Things to control in the GUI
     //int xOffset;
-    int yOffset;
+    //int yOffset;
     
-    int hIterations;
-    int vIterations;
+    //int hIterations;
+    //int vIterations;
     
-    float imgScale;
+    //float imgScale;
     
     // GUI
     void circleResolutionChanged(int & circleResolution);
@@ -42,6 +42,13 @@ class ofApp : public ofBaseApp{
     ofxVec2Slider center;
     
     ofxIntSlider xOffset;
+    ofxIntSlider yOffset;
+    
+    ofxIntSlider hIterations;
+    ofxIntSlider vIterations;
+    
+    ofxFloatSlider imgScale;
+    
     
     ofxToggle filled;
     ofxButton twoCircles;
