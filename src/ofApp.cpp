@@ -25,6 +25,14 @@ void ofApp::setup(){
     gui.add(hIterations.setup("h iters", 18, 1, 50));
     gui.add(vIterations.setup("v iters", 11, 1, 50));
     
+    gui.add(xMult.setup("xMult",124.8f,40,1024));
+    gui.add(yMult.setup("yMult",108.0f,100,300));
+    
+    gui.add(xOff2.setup("xOff2",-62.3f,100,300));
+    gui.add(yOff2.setup("yOff2",-72.0f,100,300));
+    
+
+    
     
     //gui.add(twoCircles.setup("two circles"));
     //gui.add(ringButton.setup("ring"));
@@ -36,7 +44,9 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    
+    yMult = (float)xMult/124.8f*108.0f;
+    xOff2 = xMult/124.8f*-62.3f;
+    yOff2 = yMult/108.0f*-72.0f;
 }
 
 //--------------------------------------------------------------
@@ -49,22 +59,29 @@ void ofApp::draw(){
     ofPushMatrix();
     ofTranslate(0,108);
     
+    //float xMult = 124.8f;
+    //float yMult = 108.0f;
+    
+    //float xOff2 = -62.3f;
+    //float yOff2 = -72.0f;
+    
+    
     for(int j=0;j<vIterations;j++){
         
         for(int i=0;i<hIterations;i++){
             ofPushMatrix();
-            ofTranslate(i*124.8+(j%2)*124.8/2+xOffset,j*108+yOffset);
+            ofTranslate(i*xMult+(j%2)*xMult/2+xOffset,j*yMult+yOffset);
             ofPushMatrix();
             ofRotate(i*-240+(j%2)*240);
             //ofSetColor(255,0,0);
-            img.draw(-62.3,-72,124.8,108);
+            img.draw(xOff2,yOff2,xMult,yMult);
             ofPopMatrix();
            // ofRect(0,0,3,3);
-            ofTranslate(124.8/2,-72/2);
+            ofTranslate(xMult/2,yOff2/2);
             ofRotate(-240+i*-120+j%2*-240);
             //ofSetColor(0,0,255);
             //if(j==0){
-                img.draw(-62.3,72,124.8,-108);
+                img.draw(xOff2,-1*yOff2,xMult,-1*yMult);
               //  ofRect(0,0,3,3);
                // ofDrawBitmapString(ofToString(i)+","+ofToString(j),0,0);
 
@@ -107,6 +124,12 @@ void ofApp::keyPressed(int key){
     }
     if(key == ' '){
         color = ofColor(255);
+    }
+    
+    if(key == 'i'){
+            yMult = (float)xMult/124.8f*108.0f;
+        xOff2 = xMult/124.8f*-62.3f;
+        yOff2 = yMult/108.0f*-72.0f;
     }
 }
 

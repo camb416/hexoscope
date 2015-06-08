@@ -49,6 +49,12 @@ class ofApp : public ofBaseApp{
     
     ofxFloatSlider imgScale;
     
+    ofxFloatSlider xMult;
+    ofxFloatSlider yMult;
+    
+    ofxFloatSlider xOff2;
+    ofxFloatSlider yOff2;
+    
     
     ofxToggle filled;
     ofxButton twoCircles;
