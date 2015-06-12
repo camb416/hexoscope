@@ -41,8 +41,8 @@ class ofApp : public ofBaseApp{
     ofxColorSlider color;
     ofxVec2Slider center;
     
-    ofxIntSlider xOffset;
-    ofxIntSlider yOffset;
+    ofxFloatSlider xOffset;
+    ofxFloatSlider yOffset;
     
     ofxIntSlider hIterations;
     ofxIntSlider vIterations;
@@ -55,6 +55,8 @@ class ofApp : public ofBaseApp{
     ofxFloatSlider xOff2;
     ofxFloatSlider yOff2;
     
+    ofxFloatSlider fudger;
+    
     
     ofxToggle filled;
     ofxButton twoCircles;
@@ -64,5 +66,13 @@ class ofApp : public ofBaseApp{
     ofxPanel gui;
     
     	ofSoundPlayer ring;
+    
+    int firstFile = 1;
+    int lastFile = 2296;
+    int curFile = firstFile;
+    
+    int outputFile = 1;
+    
+    bool bScreenshot;
 		
 };
